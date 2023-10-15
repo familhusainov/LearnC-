@@ -13,7 +13,7 @@ namespace ClassExamBusiness.Interfaces
         public void Add(T data);
         public void Delete(int Id);
 
-        public string GetFullName();
+        public string GetFullName(PersonBase person);
 
         //public void AddPupil();
         //public void AddTeacher();

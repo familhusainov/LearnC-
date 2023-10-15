@@ -12,6 +12,5 @@ namespace ClassExamBusiness.Entites
 
         public bool Attendance { get; set; }
 
-        public int TestProtected { get; set; }
     }
 }

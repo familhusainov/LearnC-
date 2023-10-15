@@ -13,5 +13,10 @@ namespace ClassExamBusiness.Factory
         {
             return person.Name + " " + person.Surname;
         }
+
+        public string GetFullName1(PersonBase person)
+        {
+            return person.Name + " " + person.Surname;
+        }
     }
 }

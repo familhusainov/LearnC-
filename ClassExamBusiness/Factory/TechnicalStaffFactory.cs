@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClassExamBusiness.Factory
 {
-    public class TechnicalStaffFactory : IPerson<TechnicalStaff>
+    public class TechnicalStaffFactory : BaseFactory, IPerson<TechnicalStaff>
     {
         public static List<TechnicalStaff> TechnicalStaffList;
         public void Add(TechnicalStaff data)
