@@ -22,5 +22,7 @@ namespace EntityCodeFirstExamLib
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Grade> Grades { get; set; }
+
+        public DbSet<Person> Persons { get; set; }
     }
 }
