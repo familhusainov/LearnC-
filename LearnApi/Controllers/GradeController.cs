@@ -1,5 +1,6 @@
 ﻿using EntityCodeFirstExamLib;
 using EntityCodeFirstExamLib.Models;
+using LearnApi.Errors;
 using LearnApi.Model.PostModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -87,12 +88,12 @@ namespace LearnApi.Controllers
                 if (grade <= 11)
                     message = $"{grade} sinif";
                 else if (grade == null)
-                    throw new NullReferenceException("grade is null");
+                    throw new AdminError("grade is null");
                 else
-                    throw new Exception("Unknown grade");
+                    throw new UserError("Unknown grade");
 
             }
-            catch (NullReferenceException ex) {
+            catch (AdminError ex) {
                 return StatusCode(501, ex.Message);
             }
             catch (Exception ex)
