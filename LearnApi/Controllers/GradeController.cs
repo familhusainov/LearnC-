@@ -49,6 +49,10 @@ namespace LearnApi.Controllers
         [HttpPost("post")]
         public IActionResult Post(GradePostModel model) // insert daxil etmek
         {
+            if (model.Section == null)
+                throw new Exception("Section is required field");
+            if (model.GradeName == null)
+                throw new Exception("Grade is required field");
             var newGrade = new Grade() 
             {
                 Id = model.Id,
@@ -69,6 +73,49 @@ namespace LearnApi.Controllers
             schoolContext.SaveChanges();
             return Ok("succesfully removed");
         }
+
+        [HttpGet("testError")]
+        public IActionResult testError(int? grade) // delete
+        {
+            string message =string.Empty;
+            bool IsConnected = false;   
+            IsConnected = true;
+            try
+            {
+                // som codes
+
+                if (grade <= 11)
+                    message = $"{grade} sinif";
+                else if (grade == null)
+                    throw new NullReferenceException("grade is null");
+                else
+                    throw new Exception("Unknown grade");
+
+            }
+            catch (NullReferenceException ex) {
+                return StatusCode(501, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // log yaz some codes
+                //message = "bu univessitet telebesidir";
+                // throw;
+
+                return StatusCode(500, ex.Message);
+
+            }
+            finally
+            {
+                IsConnected = false;
+            }
+
+
+            return Ok(message);
+        }
+
+
+
+
 
     }
 }
